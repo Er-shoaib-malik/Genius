@@ -1,17 +1,29 @@
+import React from 'react'
 import HomePage from './pages/HomePage'
-import SignUpButton from './components/SwipeLettersButton'
+import SignUpButton from './assets/SwipeLettersButton'
 import CMSCarousel from './pages/CMSCarousel'
-import PaperTransition from './components/PaperTransition';
+import PaperTransition from './assets/PaperTransition';
+import SignUpPage from './pages/SignUp';
+import CourseSection from './pages/CourseSection'
+import Navbar from './pages/Navbar';
+import ContactUs from './pages/ContactUs';
+import './App.css'
+import ContactForCompany from './pages/ContactForCompany';
+import Login from './pages/Login';
 function App() {
-  const mockData = [
-    { title: "Course 1" },
-    { title: "Course 2" },
-    { title: "Course 3" },
-  ];
 
   return (
-    <>
-    <HomePage/>
+    <div className='poppins-light'>
+    <Navbar/>
+    {/* <SignUpPage/> */}
+    {/* <CourseSection/> */}
+    {/* <ContactUs/> */}
+    {/* <ContactForCompany/> */}
+    {/* <Login/> */}
+
+
+
+        {/* <HomePage/>
     <SignUpButton/>
     <div style={{ width: 200, height: 300, margin: "50px auto" }}>
       <PaperTransition
@@ -21,8 +33,8 @@ function App() {
         bounce={0.3}
         enableClickSpin={true}
       />
+    </div> */}
     </div>
-    </>
   )
 }
 

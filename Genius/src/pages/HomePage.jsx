@@ -1,6 +1,6 @@
 import * as React from "react"
 import { motion } from "framer-motion"
-import SignUpButton from '../components/SwipeLettersButton'
+import SignUpButton from '../assets/SwipeLettersButton'
 
 const TEXT = "Unlock the Genius in[br]You — Anywhere in the[br]World"
 const BREAK_TOKEN = "[br]"
