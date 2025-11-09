@@ -1,7 +1,7 @@
 import React from "react";
 import DashNavbar from "../components/DashNavbar";
 import ProgressChartLockedNoInputs from "../components/ProgressChartLockedNoInputs";
-import StudentProfileCard from "../components/StudentProfileCard";
+import StudentProfileCard from "../components/StudentProfileCard"
 import XPProgressCompact from "../components/XPProgressCompact";
 import TodoList from "../components/TodoList";
 import { FlaskConical, CircleQuestionMarkIcon } from "lucide-react";

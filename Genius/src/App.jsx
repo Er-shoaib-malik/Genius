@@ -18,6 +18,7 @@ import AwardsCertificates from "./pages/AwardsCertificates";
 import ScrollImageSequence from "./components/ScrollImageSequence";
 import Library from "./pages/Library";
 import BookScrollSection from "./components/BookScrollSection";
+import Pdfsbooks from "./pages/Pdfsbooks";
 function App() {
   return (
     <div className="poppins-light">
@@ -31,12 +32,14 @@ function App() {
       {/* <Login/> */}
 
       {/* <DashBoard/> */}
-      {/* <Calender/> */}
-      {/* <MyCourses/> */}
-      {/* <AwardsCertificates/> */}
+      {/* <Calender/>
+      <MyCourses/>
+      <AwardsCertificates/> */}
       {/* <ScrollImageSequence/> */}
       {/* <Library/> */}
-      <BookScrollSection/>
+      {/* <BookScrollSection/> */}
+
+      <Pdfsbooks/>
 
       {/* <HomePage/>
     <SignUpButton/>

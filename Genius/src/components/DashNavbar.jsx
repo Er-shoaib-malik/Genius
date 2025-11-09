@@ -44,14 +44,14 @@ export default function DashNavbar() {
         </div>
 
         {/* Profile + Notifications */}
-        <div className="flex items-center gap-8 mr-3 p-1 rounded-sm bg-gray-200/30">
+        <div className="flex items-center gap-10 mr-10 p-1 rounded-sm bg-gray-200/30">
           <div className="flex items-center gap-2">
             <div className="w-8 h-8 rounded-full overflow-hidden">
               <img src="profile icon.avif" className="h-8 pl-0.5" />
             </div>
             <span className="font-regular text-xs">Alice Smith</span>
           </div>
-          <div className="relative flex gap-2">
+          <div className="relative flex gap-8">
             <button className="relative">
               <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs w-1.5 h-1.5 rounded-full flex items-center justify-center"></span>
               <Bell size={16} />

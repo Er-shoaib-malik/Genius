@@ -1,5 +1,4 @@
 import React from "react";
-import { motion } from "framer-motion";
 import {
   AppWindow,
   PieChart,
@@ -11,7 +10,8 @@ import {
 } from "lucide-react";
 
 export default function StudentProfileCard() {
-  const date = new Date().toLocaleString("en-US", {
+  const now = new Date(); // actual Date object
+  const date = now.toLocaleString("en-US", {
     weekday: "long",
     month: "long",
     day: "numeric",
@@ -20,18 +20,15 @@ export default function StudentProfileCard() {
     minute: "2-digit",
   });
 
+  const getGreeting = (hour) => {
+    if (hour < 12) return "Good Morning!";
+    if (hour < 18) return "Good Afternoon!";
+    return "Good Evening!";
+  };
+
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-  };
-    const getGreeting = (hour) => {
-    if (hour < 12) {
-      return "Good Morning!";
-    } else if (hour < 18) {
-      return "Good Afternoon!";
-    } else {
-      return "Good Evening!";
-    }
+    console.log("Continue button clicked");
   };
 
   return (
@@ -39,7 +36,9 @@ export default function StudentProfileCard() {
       {/* Header */}
       <div className="flex flex-col space-y-1">
         <p className="text-gray-800 text-sm font-medium">{date}</p>
-        <h2 className="text-2xl font-semibold text-gray-900">{getGreeting(now.getHours())} Alice</h2>
+        <h2 className="text-2xl font-semibold text-gray-900">
+          {getGreeting(now.getHours())} Alice
+        </h2>
         <p className="text-gray-800 text-sm font-medium">Level 2: Thinker</p>
       </div>
 
@@ -48,7 +47,7 @@ export default function StudentProfileCard() {
         <AppWindow className="w-5 h-5 cursor-pointer hover:text-yellow-600 transition-colors" />
         <PieChart className="w-5 h-5 cursor-pointer text-blue-500 hover:text-yellow-600 transition-colors" />
         <LampDesk className="w-5 h-5 cursor-pointer text-blue-500 hover:text-yellow-600 transition-colors" />
-        <Book className="w-5 h-5 cursor-pointer text-blue-500  hover:text-yellow-600 transition-colors" />
+        <Book className="w-5 h-5 cursor-pointer text-blue-500 hover:text-yellow-600 transition-colors" />
         <Plus className="w-5 h-5 cursor-pointer text-gray-700 hover:text-yellow-600 transition-colors" />
       </div>
 
@@ -71,12 +70,12 @@ export default function StudentProfileCard() {
           </button>
         </div>
 
-        {/* Right side — Instructor Image */}
-        <div className="w-[571px] h-[344px] ">
+        {/* Image */}
+        <div className="w-[571px] h-[344px]">
           <img
             src="15.png"
             alt="Instructor"
-            className="object-cover w-full h-full rounded-2xl md:rounded-none md:rounded-r-2xl"
+            className="object-cover w-full h-full rounded-2xl"
           />
         </div>
       </div>
