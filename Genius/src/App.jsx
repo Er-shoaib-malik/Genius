@@ -1,5 +1,5 @@
 import React from "react";
-import HomePage from "./pages/HomePage";
+import HomePage from "./pages/LandingText";
 import SignUpButton from "./assets/SwipeLettersButton";
 import CMSCarousel from "./pages/CMSCarousel";
 import PaperTransition from "./assets/PaperTransition";
@@ -19,6 +19,7 @@ import ScrollImageSequence from "./components/ScrollImageSequence";
 import Library from "./pages/Library";
 import BookScrollSection from "./components/BookScrollSection";
 import Pdfsbooks from "./pages/Pdfsbooks";
+import PdfTranslation from "./pages/PdfTranslation";
 function App() {
   return (
     <div className="poppins-light">
@@ -38,20 +39,11 @@ function App() {
       {/* <ScrollImageSequence/> */}
       {/* <Library/> */}
       {/* <BookScrollSection/> */}
+      {/* <Pdfsbooks/> */}
 
-      <Pdfsbooks/>
+      <PdfTranslation/>
 
-      {/* <HomePage/>
-    <SignUpButton/>
-    <div style={{ width: 200, height: 300, margin: "50px auto" }}>
-      <PaperTransition
-        image1={{ src: "https://picsum.photos/200/300?grayscale" }}
-        image2={{ src: "https://picsum.photos/200/300" }}
-        springDuration={1.5}
-        bounce={0.3}
-        enableClickSpin={true}
-      />
-    </div> */}
+
     </div>
   );
 }
