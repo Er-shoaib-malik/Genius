@@ -1,49 +1,28 @@
 import React from "react";
-import HomePage from "./pages/LandingText";
-import SignUpButton from "./assets/SwipeLettersButton";
-import CMSCarousel from "./pages/CMSCarousel";
-import PaperTransition from "./assets/PaperTransition";
-import SignUpPage from "./pages/SignUp";
-import CourseSection from "./pages/CourseSection";
-import Navbar from "./pages/Navbar";
-import ContactUs from "./pages/ContactUs";
-import "./App.css";
-import ContactForCompany from "./pages/ContactForCompany";
-import Login from "./pages/Login";
-import DashBoard from "./pages/DashBoard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { TodoProvider } from "./context/ToDoContext";
 import DashNavbar from "./components/DashNavbar";
-import Calender from "./pages/Calender";
+import DashBoard from "./pages/DashBoard";
+import Calendar from "./pages/Calender";
 import MyCourses from "./pages/MyCourses";
-import AwardsCertificates from "./pages/AwardsCertificates";
-import ScrollImageSequence from "./components/ScrollImageSequence";
-import Library from "./pages/Library";
-import BookScrollSection from "./components/BookScrollSection";
 import Pdfsbooks from "./pages/Pdfsbooks";
-import PdfTranslation from "./pages/PdfTranslation";
+import AwardsCertificates from "./pages/AwardsCertificates";
+
 function App() {
   return (
     <div className="poppins-light">
-      {/* <Navbar /> */}
-      {/* <HomePage/> */}
-
-      {/* <SignUpPage/> */}
-      {/* <CourseSection/> */}
-      {/* <ContactUs/> */}
-      {/* <ContactForCompany/> */}
-      {/* <Login/> */}
-
-      {/* <DashBoard/> */}
-      {/* <Calender/>
-      <MyCourses/>
-      <AwardsCertificates/> */}
-      {/* <ScrollImageSequence/> */}
-      {/* <Library/> */}
-      {/* <BookScrollSection/> */}
-      {/* <Pdfsbooks/> */}
-
-      <PdfTranslation/>
-
-
+      <TodoProvider>
+        <BrowserRouter>
+          <DashNavbar />
+          <Routes>
+            <Route path="/" element={<DashBoard />} />
+            <Route path="/calendar" element={<Calendar />} />
+            <Route path="/courses" element={<MyCourses />} />
+            <Route path="/pdfsbooks" element={<Pdfsbooks />} />
+            <Route path="/awards" element={<AwardsCertificates />} />
+          </Routes>
+        </BrowserRouter>
+      </TodoProvider>
     </div>
   );
 }

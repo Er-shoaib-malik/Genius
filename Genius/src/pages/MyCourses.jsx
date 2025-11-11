@@ -10,7 +10,6 @@ const MyCourses = () => {
 
   return (
     <div>
-      <DashNavbar />
       <div className="bg-gray-100 min-h-screen poppins-regular">
         <div className="rounded-[70px] px-9 py-23 bg-white flex flex-col items-center min-h-screen relative">
           {/* Dashboard Text */}

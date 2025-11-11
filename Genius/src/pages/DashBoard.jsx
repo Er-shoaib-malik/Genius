@@ -61,7 +61,6 @@ const DashBoard = () => {
 
   return (
     <div>
-      <DashNavbar />
 
       <div className="bg-gray-100">
         <div className="rounded-[70px] px-10 py-8 bg-white flex flex-col gap-[39px]">

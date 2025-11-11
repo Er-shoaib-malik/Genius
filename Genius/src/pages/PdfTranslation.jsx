@@ -52,8 +52,8 @@ const PdfTranslation = () => {
   const { scrollYProgress } = useScroll();
   const bgColor = useTransform(
     scrollYProgress,
-    [0, 0.3, 0.5, 1], // adjust transition position
-    ["#000000", "#111111", "#FFFFFF", "#FFFFFF"] // from black → white
+    [0, 0.3,0.4, 0.5, 1], // adjust transition position
+    ["#000000", "#111111","#FFFFFF", "#FFFFFF", "#FFFFFF"] // from black → white
   );
   const [file, setFile] = useState(null);
   const [hover, setHover] = useState(false);
@@ -95,129 +95,141 @@ const PdfTranslation = () => {
       </section>
 
       {/* CV SECTION */}
-      <section className="flex justify-center items-center px-10  relative">
+<section className="flex justify-center items-center px-10 relative">
+  <motion.div
+    initial={{ opacity: 0, y: 60 }}
+    animate={{ opacity: 1, y: 0 }}
+    transition={{ duration: 0.8, ease: "easeOut" }}
+    className="w-[1450px] h-[590px] p-5 rounded-[40px] bg-gradient-to-b from-[#2E5BFF] to-[#000000] flex items-center justify-between relative overflow-hidden"
+  >
+    {/* Left Card */}
+    <motion.div
+      initial={{ opacity: 0, y: -60 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.8, ease: "easeOut" }}
+      className="w-[470px] h-[560px] bg-gradient-to-b from-[#2E5BFF] to-[#d4fc8a] rounded-[25px] shadow-lg flex flex-col justify-between p-8 text-black"
+    >
+      <div>
+        <Languages className="w-[134px] h-[134px] text-white opacity-60 relative -right-68" />
+      </div>
+      <div>
+        <p className="text-xl font-medium mb-2">In few Steps</p>
+        <h2 className="text-[30px] font-semibold leading-snug">
+          Translate any PDF — <br /> without breaking the layout.
+        </h2>
+      </div>
+    </motion.div>
+
+    {/* Right Text Section */}
+    <div className="flex flex-col w-[800px] justify-center text-left text-[#2E5BFF] mr-5">
+      <motion.h1
+        initial={{ opacity: 0, y: -60 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.3 }}
+        className="text-[63px] font-semibold leading-tight w-[800px]"
+      >
+        Your CV, your reports or <br /> any other pdf document <br /> – all
+        instantly translated
+      </motion.h1>
+
+      {/* Buttons */}
+      <div className="flex flex-col gap-10 mt-6">
+        <motion.button
+          initial={{ opacity: 0, y: 60 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.5 }}
+          className="bg-black text-white h-[55px] w-[265px] pl-5 flex items-center rounded-lg text-[20px] font-medium border border-[#232323] hover:bg-neutral-900 transition"
+        >
+          Hover over the CV
+        </motion.button>
+
         <motion.div
           initial={{ opacity: 0, y: 60 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="w-[1450px] h-[590px] p-5 rounded-[40px] bg-gradient-to-b from-[#2E5BFF] to-[#000000] flex items-center justify-between relative overflow-hidden"
+          transition={{ duration: 0.7, ease: "easeOut", delay: 0.7 }}
+          className="flex w-full mt-2"
         >
-          {/* Left Card */}
-          <div className="w-[470px] h-[560px] bg-gradient-to-b from-[#2E5BFF] to-[#d4fc8a] rounded-[25px] shadow-lg flex flex-col justify-between p-8 text-black">
-            <div>
-              <Languages className="w-[134px] h-[134px] text-white opacity-60 relative -right-68" />
-            </div>
-            <div>
-              <p className="text-xl font-medium mb-2">In few Steps</p>
-              <h2 className="text-[30px] font-semibold leading-snug">
-                Translate any PDF — <br /> without breaking the layout.
-              </h2>
-            </div>
-          </div>
-
-          {/* Right Text Section */}
-          <div className="flex flex-col w-[800px] justify-center text-left text-[#2E5BFF] mr-5">
-            <h1 className="text-[63px] font-semibold leading-tight w-[800px]">
-              Your CV, your reports or <br /> any other pdf document <br /> –
-              all instantly translated
-            </h1>
-
-            {/* Buttons */}
-            <div className="flex flex-col gap-10 mt-6">
-              <button className="bg-black text-white h-[55px] w-[265px] pl-5 flex items-center rounded-lg text-[20px] font-medium border border-[#232323] hover:bg-neutral-900 transition">
-                Hover over the CV
-              </button>
-              <div className="flex w-full mt-2">
-                <button className="relative w-45 h-14 bg-white border-4 border-white text-black font-semibold rounded-[21px] flex items-center justify-center transition group overflow-hidden">
-                  <div className="absolute inset-0 bg-[#2E5BFF] rounded-full transform -translate-x-full group-hover:translate-x-0 transition-transform duration-200 ease-out"></div>
-                  <div className="absolute left-0 top-0 bottom-0 flex items-center pl-0.5 z-10">
-                    <div className="bg-[#2E5BFF] rounded-full p-4 flex items-center justify-center">
-                      <ArrowRight className="w-4 h-4 text-white" />
-                    </div>
-                  </div>
-                  <span className="relative text-[18px] z-10 group-hover:text-white transition-colors duration-300 ml-12">
-                    Start Now
-                  </span>
-                </button>
+          <button className="relative w-45 h-14 bg-white border-4 border-white text-black font-semibold rounded-[21px] flex items-center justify-center transition group overflow-hidden">
+            <div className="absolute inset-0 bg-[#2E5BFF] rounded-full transform -translate-x-full group-hover:translate-x-0 transition-transform duration-200 ease-out"></div>
+            <div className="absolute left-0 top-0 bottom-0 flex items-center pl-0.5 z-10">
+              <div className="bg-[#2E5BFF] rounded-full p-4 flex items-center justify-center">
+                <ArrowRight className="w-4 h-4 text-white" />
               </div>
             </div>
-          </div>
-
-          {/* CV Card (Animated) */}
-          <motion.div
-            initial={{ y: 400, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            whileHover={{ y: 200 }}
-            transition={{ duration: 0.6, ease: "easeOut" }}
-            className="absolute bottom-[-20px] right-[30px] z-50 cursor-pointer"
-          >
-            <div className="bg-white w-[450px] h-[400px] rounded-xl shadow-2xl overflow-hidden p-8 ">
-              {/* Folded corner */}
-              <div className="absolute top-0 right-0 w-0 h-0 border-t-[80px] border-t-gray-200 border-l-[80px] border-l-transparent"></div>
-
-              {/* Header */}
-              <div className="mb-3">
-                <h2 className="text-3xl font-bold text-gray-900">
-                  Jacob Smith
-                </h2>
-                <p className="text-[16px] text-gray-600 font-medium">
-                  Marketing Specialist
-                </p>
-              </div>
-
-              {/* Profile Image + About */}
-              <div className="flex gap-6 mt-4">
-                <div className="w-[180px] h-[180px] overflow-hidden rounded-md">
-                  <img
-                    src="/cv.avif"
-                    alt="Profile"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-
-                <div className="flex-1">
-                  <h3 className="text-[17px] font-semibold text-gray-800 mb-1">
-                    About Me
-                  </h3>
-                  <p className="text-sm text-gray-600 leading-relaxed">
-                    Dedicated marketing professional with over 5 years of
-                    experience driving brand growth through data-driven
-                    campaigns. Passionate about content, social media, and
-                    visual storytelling.
-                  </p>
-                </div>
-              </div>
-
-              {/* Experience */}
-              <div className="mt-6">
-                <h3 className="text-[17px] font-semibold text-gray-800 mb-1">
-                  Professional Experience
-                </h3>
-                <div className="text-sm text-gray-600 leading-relaxed">
-                  <p className="font-semibold text-gray-800">
-                    Senior Marketing Manager — BrightEdge
-                  </p>
-                  <p className="italic text-gray-500 text-xs mb-1">
-                    Jan 2020 – Present
-                  </p>
-                  <ul className="list-disc list-inside space-y-1">
-                    <li>
-                      Led multi-channel marketing campaigns increasing revenue
-                      by 30%.
-                    </li>
-                    <li>
-                      Managed a team of 6 marketing specialists and designers.
-                    </li>
-                    <li>
-                      Developed strategies that enhanced digital reach by 200%.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </motion.div>
+            <span className="relative text-[18px] z-10 group-hover:text-white transition-colors duration-300 ml-12">
+              Start Now
+            </span>
+          </button>
         </motion.div>
-      </section>
+      </div>
+    </div>
+
+    {/* CV Card (Unchanged) */}
+    <motion.div
+      initial={{ y: 400, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      whileHover={{ y: 200 }}
+      transition={{ duration: 0.6, ease: "easeOut" }}
+      className="absolute bottom-[-20px] right-[30px] z-50 cursor-pointer"
+    >
+      <div className="bg-white w-[450px] h-[400px] rounded-xl shadow-2xl overflow-hidden p-8 ">
+        <div className="absolute top-0 right-0 w-0 h-0 border-t-[80px] border-t-gray-200 border-l-[80px] border-l-transparent"></div>
+
+        <div className="mb-3">
+          <h2 className="text-3xl font-bold text-gray-900">Jacob Smith</h2>
+          <p className="text-[16px] text-gray-600 font-medium">
+            Marketing Specialist
+          </p>
+        </div>
+
+        <div className="flex gap-6 mt-4">
+          <div className="w-[180px] h-[180px] overflow-hidden rounded-md">
+            <img
+              src="/cv.avif"
+              alt="Profile"
+              className="w-full h-full object-cover"
+            />
+          </div>
+
+          <div className="flex-1">
+            <h3 className="text-[17px] font-semibold text-gray-800 mb-1">
+              About Me
+            </h3>
+            <p className="text-sm text-gray-600 leading-relaxed">
+              Dedicated marketing professional with over 5 years of experience
+              driving brand growth through data-driven campaigns. Passionate
+              about content, social media, and visual storytelling.
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-6">
+          <h3 className="text-[17px] font-semibold text-gray-800 mb-1">
+            Professional Experience
+          </h3>
+          <div className="text-sm text-gray-600 leading-relaxed">
+            <p className="font-semibold text-gray-800">
+              Senior Marketing Manager — BrightEdge
+            </p>
+            <p className="italic text-gray-500 text-xs mb-1">
+              Jan 2020 – Present
+            </p>
+            <ul className="list-disc list-inside space-y-1">
+              <li>
+                Led multi-channel marketing campaigns increasing revenue by 30%.
+              </li>
+              <li>Managed a team of 6 marketing specialists and designers.</li>
+              <li>
+                Developed strategies that enhanced digital reach by 200%.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </motion.div>
+  </motion.div>
+</section>
+
 
       {/* WHITE SECTION */}
       <section className="flex justify-between items-center w-full py-[100px] bg-transparent">

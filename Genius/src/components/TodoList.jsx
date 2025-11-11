@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from "react";
-
+import React, { useState } from "react";
+import { useTodos } from "../context/ToDoContext";
 export default function TodoList() {
-  const [tasks, setTasks] = useState([]);
-  const [loading, setLoading] = useState(true);
+  const { tasks, addTask, toggleTask, updateTask, deleteTask } = useTodos();
   const [showForm, setShowForm] = useState(false);
   const [draft, setDraft] = useState({
     name: "",
@@ -11,31 +10,12 @@ export default function TodoList() {
     course: "General",
   });
 
-  const storageKey = "TASKS_reactjs";
-
-  useEffect(() => {
-    const stored = loadLocal(storageKey);
-    setTasks(stored);
-    setLoading(false);
-  }, []);
-
-  useEffect(() => {
-    saveLocal(storageKey, tasks);
-  }, [tasks]);
-
-  const toggleTask = (id) =>
-    setTasks((t) =>
-      t.map((x) => (x.id === id ? { ...x, completed: !x.completed } : x))
-    );
-
-  const updateTask = (id, patch) =>
-    setTasks((t) => t.map((x) => (x.id === id ? { ...x, ...patch } : x)));
-
-  const deleteTask = (id) => setTasks((t) => t.filter((x) => x.id !== id));
-
   const saveDraft = () => {
     if (!isDraftValid(draft)) return;
-    const alarmISO = new Date(`${draft.date}T${normalizeTime(draft.time)}:00`).toISOString();
+    const alarmISO = new Date(
+      `${draft.date}T${normalizeTime(draft.time)}:00`
+    ).toISOString();
+
     const newT = {
       id: cryptoId(),
       name: draft.name.trim(),
@@ -44,7 +24,7 @@ export default function TodoList() {
       createdAt: new Date().toISOString(),
       course: draft.course.trim(),
     };
-    setTasks((t) => [newT, ...t]);
+    addTask(newT);
     setShowForm(false);
   };
 
@@ -78,11 +58,9 @@ export default function TodoList() {
         </button>
       </div>
 
-      {loading ? (
-        <p className="text-sm text-slate-500">Loading…</p>
-      ) : (
-        <div className="grid gap-2">
-          {tasks.map((t) => {
+      <div className="grid gap-2">
+        {tasks.length ? (
+          tasks.map((t) => {
             const overdue = isOverdue(t.alarm, t.completed);
             const color = dueColor(t.alarm, t.completed);
             return (
@@ -104,7 +82,9 @@ export default function TodoList() {
                     onChange={(e) => updateTask(t.id, { name: e.target.value })}
                     placeholder="Task title"
                     className={`border-none bg-transparent text-sm font-semibold focus:outline-none ${
-                      t.completed ? "line-through text-gray-400" : "text-slate-900"
+                      t.completed
+                        ? "line-through text-gray-400"
+                        : "text-slate-900"
                     }`}
                   />
 
@@ -119,7 +99,9 @@ export default function TodoList() {
                   )}
 
                   {t.course && (
-                    <div className="mt-1 text-xs text-gray-400">{t.course}</div>
+                    <div className="mt-1 text-xs text-gray-400">
+                      {t.course}
+                    </div>
                   )}
                 </div>
 
@@ -131,12 +113,11 @@ export default function TodoList() {
                 </button>
               </div>
             );
-          })}
-          {!tasks.length && (
-            <p className="text-sm text-slate-500">No tasks yet.</p>
-          )}
-        </div>
-      )}
+          })
+        ) : (
+          <p className="text-sm text-slate-500">No tasks yet.</p>
+        )}
+      </div>
 
       {showForm && (
         <QuickAddModal
@@ -179,7 +160,9 @@ function QuickAddModal({ draft, setDraft, onCancel, onSave }) {
             <input
               type="date"
               value={draft.date}
-              onChange={(e) => setDraft((d) => ({ ...d, date: e.target.value }))}
+              onChange={(e) =>
+                setDraft((d) => ({ ...d, date: e.target.value }))
+              }
               className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
           </div>
@@ -188,7 +171,9 @@ function QuickAddModal({ draft, setDraft, onCancel, onSave }) {
             <input
               type="time"
               value={draft.time}
-              onChange={(e) => setDraft((d) => ({ ...d, time: e.target.value }))}
+              onChange={(e) =>
+                setDraft((d) => ({ ...d, time: e.target.value }))
+              }
               className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm focus:border-blue-500 focus:ring-1 focus:ring-blue-500"
             />
           </div>
@@ -234,21 +219,6 @@ function isDraftValid(d) {
   return nameOK && dateOK && timeOK && courseOK;
 }
 
-function loadLocal(k) {
-  try {
-    const raw = localStorage.getItem(k);
-    return raw ? JSON.parse(raw) : [];
-  } catch {
-    return [];
-  }
-}
-
-function saveLocal(k, v) {
-  try {
-    localStorage.setItem(k, JSON.stringify(v));
-  } catch {}
-}
-
 function cryptoId() {
   return crypto.randomUUID
     ? crypto.randomUUID()
@@ -256,9 +226,10 @@ function cryptoId() {
 }
 
 function toISODate(d) {
-  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, "0")}-${String(
-    d.getDate()
-  ).padStart(2, "0")}`;
+  return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(
+    2,
+    "0"
+  )}-${String(d.getDate()).padStart(2, "0")}`;
 }
 
 function normalizeTime(t) {

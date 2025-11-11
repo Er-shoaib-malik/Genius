@@ -1,5 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
+
 import {
   Home,
   Calendar,
@@ -12,20 +14,18 @@ import {
 } from "lucide-react";
 
 const navItems = [
-  { icon: <Home size={20} />, label: "Back to Genius" },
-  { icon: <Calendar size={20} />, label: "Calendar" },
-  { icon: <Paperclip size={20} />, label: "Dashboard" },
-  { icon: <File size={20} />, label: "Courses" },
-  { icon: <BookOpen size={20} />, label: "Pdfs & Books" },
-  { icon: <Trophy size={20} />, label: "Awards" },
+  { icon: <Home size={22} />, label: "Back to Genius", href: "/" },
+  { icon: <Calendar size={22} />, label: "Calendar", href: "/calendar" },
+  { icon: <Paperclip size={22} />, label: "Dashboard", href: "/" },
+  { icon: <File size={22} />, label: "Courses", href: "/courses" },
+  { icon: <BookOpen size={22} />, label: "Pdfs & Books", href: "/pdfsbooks" },
+  { icon: <Trophy size={22} />, label: "Awards", href: "/awards" },
 ];
-
-
 
 export default function DashNavbar() {
   return (
     <div>
-      <nav className="flex justify-between items-center px-6 py-3.5 bg-gray-100 font-poppins">
+      <nav className="flex justify-between items-center px-6 pt-4 pb-6 bg-gray-100 font-poppins">
         {/* Logo */}
         <div className="text-2xl font-bold">
           <span className="text-[#1DB2F0]">G</span>
@@ -37,9 +37,11 @@ export default function DashNavbar() {
         </div>
 
         {/* Nav Items */}
-        <div className="flex flex-wrap items-center space-x-4">
+        <div className="flex flex-wrap items-center space-x-5 ml-20">
           {navItems.map((item, i) => (
-            <NavButton key={i} icon={item.icon} label={item.label} />
+            <a key={i} href={item.href}>
+              <NavButton icon={item.icon} label={item.label} />
+            </a>
           ))}
         </div>
 
@@ -62,8 +64,6 @@ export default function DashNavbar() {
           </div>
         </div>
       </nav>
-
-      
     </div>
   );
 }
@@ -71,7 +71,7 @@ export default function DashNavbar() {
 function NavButton({ icon, label }) {
   return (
     <motion.div
-      className="relative px-4 py-2 rounded-md cursor-pointer flex items-center overflow-hidden bg-gray-200/30"
+      className="relative px-4 py-3 rounded-md cursor-pointer flex items-center overflow-hidden bg-gray-200/30"
       whileHover="hover"
       initial="initial"
     >
@@ -106,13 +106,13 @@ function NavButton({ icon, label }) {
           initial: {
             opacity: 0,
             width: 0,
-            marginleft: 0
+            marginleft: 0,
           },
           hover: {
             opacity: 1,
             width: "auto",
             color: "#ffffff",
-            margin: "0 0 0 8px" ,
+            margin: "0 0 0 8px",
             transition: {
               duration: 0.3,
               ease: "easeOut",

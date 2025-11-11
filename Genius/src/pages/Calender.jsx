@@ -27,7 +27,6 @@ const Calendar = () => {
 
   return (
     <div>
-      <DashNavbar />
 
       <div className="bg-gray-100 min-h-screen">
         <div className="rounded-[70px] px-10 py-8 bg-white flex flex-row items-center gap-[20px] min-h-screen">
