@@ -75,10 +75,10 @@ export default function ScrollImageSequence() {
       />
 
       {/* Text overlay (fades in/out as you scroll if you want later) */}
-      <div className="sticky top-0 flex items-center justify-center h-screen text-white text-center">
+      <div className="sticky  flex items-center justify-center h-screen text-white text-center">
         <div>
-          <h1 className="text-5xl font-bold mb-4">Read • Learn • Create</h1>
-          <p className="text-2xl font-semibold">Your E-book Studio</p>
+          <h1 className="text-6xl font-bold mb-4">Read • Learn • Create</h1>
+          <p className="text-6xl font-semibold">Your E-book Studio</p>
         </div>
       </div>
     </section>

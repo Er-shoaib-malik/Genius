@@ -17,7 +17,7 @@ const navItems = [
   { icon: <Home size={22} />, label: "Back to Genius", href: "/" },
   { icon: <Calendar size={22} />, label: "Calendar", href: "/calendar" },
   { icon: <Paperclip size={22} />, label: "Dashboard", href: "/" },
-  { icon: <File size={22} />, label: "Courses", href: "/courses" },
+  { icon: <File size={22} />, label: "Courses", href: "/mycourses" },
   { icon: <BookOpen size={22} />, label: "Pdfs & Books", href: "/pdfsbooks" },
   { icon: <Trophy size={22} />, label: "Awards", href: "/awards" },
 ];
